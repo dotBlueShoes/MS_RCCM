@@ -2,10 +2,19 @@
 
 namespace windows::windowLeft {
 	
-	HWND hTab;
+	///Outter
+	winapi::windowHandle hTab;
+	/// Must start from 0
+	#define ID_TAB_0 0
+	#define ID_TAB_1 1
 	
-	#define ID_TAB_ZW 1
-	#define ID_TAB_ST 0
+	///Inner
+	winapi::windowHandle innerTab;
+	/// Must start from 0
+	#define ID_TAB_I_0 0
+	#define ID_TAB_I_1 1
+	#define ID_TAB_I_2 2
+	#define ID_TAB_I_3 3
 	
 	proceeded stdcall Procedure(
 		winapi::windowHandle window,
@@ -22,21 +31,49 @@ namespace windows::windowLeft {
 			}
 				
 			case (winapi::window::input)WM_NOTIFY: {
-				LPNMHDR n = (LPNMHDR)lArgument;
-				if (n->code == TCN_SELCHANGE && n->hwndFrom == hTab) { // Sprawdza, czy uchwyt pochodzi od hTab
-					int index = TabCtrl_GetCurSel(hTab);
-					switch( index ) { // indeks aktualnej kontrolki
-						case ID_TAB_ST:
-							if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_ST");
-							//ShowWindow( hEdit, SW_SHOW );
-							//ShowWindow( hRadioButton, SW_HIDE );
-							break;
-						case ID_TAB_ZW:
-							if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_ZW");
-							//ShowWindow( hEdit, SW_HIDE );
-							//ShowWindow( hRadioButton, SW_SHOW );
-							break;
-							//itd.
+				LPNMHDR notyfication ( (LPNMHDR)lArgument );
+				if (notyfication->code == TCN_SELCHANGE) {
+					if (notyfication->hwndFrom == hTab) {						/// Sprawdza, czy uchwyt pochodzi od hTab
+						const int index ( SendMessage(hTab, TCM_GETCURSEL, 0, 0) ); /// Indeks aktualnej kontrolki, Get Current Selected
+						switch( index ) { 															
+							case ID_TAB_0:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_0");
+								//ShowWindow( hEdit, SW_SHOW );
+								//ShowWindow( hRadioButton, SW_HIDE );
+								break;
+							case ID_TAB_1:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_1");
+								//ShowWindow( hEdit, SW_HIDE );
+								//ShowWindow( hRadioButton, SW_SHOW );
+								break;
+								//itd.
+						}
+					} else if (notyfication->hwndFrom == innerTab) {
+						const int index ( SendMessage(innerTab, TCM_GETCURSEL, 0, 0) ); /// Indeks aktualnej kontrolki, Get Current Selected
+						switch( index ) { 
+							case ID_TAB_I_0:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_0");
+								//ShowWindow( hEdit, SW_SHOW );
+								//ShowWindow( hRadioButton, SW_HIDE );
+								break;
+							case ID_TAB_I_1:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_1");
+								//ShowWindow( hEdit, SW_HIDE );
+								//ShowWindow( hRadioButton, SW_SHOW );
+								break;
+								//itd.
+							case ID_TAB_I_2:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_2");
+								//ShowWindow( hEdit, SW_SHOW );
+								//ShowWindow( hRadioButton, SW_HIDE );
+								break;
+							case ID_TAB_I_3:
+								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_3");
+								//ShowWindow( hEdit, SW_HIDE );
+								//ShowWindow( hRadioButton, SW_SHOW );
+								break;
+								//itd.
+						}
 					}
 				}
 				return proceeded::False;

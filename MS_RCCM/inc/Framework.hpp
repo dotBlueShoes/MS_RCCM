@@ -1,5 +1,5 @@
 ﻿#pragma once
-//#pragma comment(lib, "comctl32.lib")
+//#pragma comment(lib, "comctl32.lib") // DefSubclassProc, SetWindowSubclass
 
 #include "MST.hpp"							// MST - Is a library I use for my cpp projects.
 #include "MST/WinAPI.hpp"
