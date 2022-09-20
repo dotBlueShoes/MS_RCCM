@@ -82,10 +82,15 @@ rule refresh
   $projectPath\$projectName $mstPath
   
 # https://docs.microsoft.com/en-us/cpp/build/understanding-manifest-generation-for-c-cpp-programs?view=msvc-170
-rule add_manifest
+rule add_manifest_release
   command = cmd /c "$mt -manifest $
   "$projectPath\$projectName\$projectName.exe.manifest" $
   -outputresource:"$projectPath\$buildDir\$projectTitle.exe"";1
+  
+rule add_manifest_debug
+  command = cmd /c "$mt -manifest $
+  "$projectPath\$projectName\$projectName.exe.manifest" $
+  -outputresource:"$projectPath\$buildDir\$debugPath\$projectTitle.exe"";1
   
   
 # https://docs.microsoft.com/en-us/windows/win32/menurc/using-rc-the-rc-command-line-
@@ -110,6 +115,7 @@ build rsh : refresh
 build cls : clear
 build stp : setup
 build crs : compile_resource
-build adm : add_manifest
+build amr : add_manifest_release
+build amd : add_manifest_debug
 
 

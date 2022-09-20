@@ -1,5 +1,5 @@
 #include "Framework.hpp"
-#include "Windows/PreviewWindow/PreviewWindow.hpp"
+
 #include "Windows/DialogWindows/WindowAbout.hpp"
 #include "Windows/WindowEditor.hpp"
 #include "Windows/WindowRight.hpp"

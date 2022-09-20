@@ -1,9 +1,7 @@
 #include "Framework.hpp"
 
-#include "Windows/PreviewWindow/PreviewWindow.hpp"
-#include "Windows/DialogWindows/WindowAbout.hpp"
-
 #include "Procedures/ProcedureMain.hpp"
+#include "Windows/DialogWindows/WindowAbout.hpp"
 #include "Windows/WindowEditor.hpp"
 #include "Windows/WindowRight.hpp"
 #include "Windows/WindowLeft.hpp"
@@ -30,6 +28,7 @@ namespace windows::mainWindow {
 		
 		{
 			const vector2<uint64> windowMainPoistion ( CW_USEDEFAULT, 0 );
+			const vector2<uint64> initialClientAreaOffset (16, 59); // Honestly maybe i should just use getclienbtArea.. thats way simpler i think
 			
 			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Create");
 				
@@ -51,6 +50,7 @@ namespace windows::mainWindow {
 				mainProcess,
 				window,
 				brushes::primar.Get(),
+				initialClientAreaOffset,
 				windowState
 			);
 			
@@ -58,6 +58,7 @@ namespace windows::mainWindow {
 				mainProcess,
 				window,
 				brushes::second.Get(),
+				initialClientAreaOffset,
 				windowState
 			);
 			
