@@ -1,0 +1,5 @@
+# Project Properties File
+projectName = MS_RCCM
+projectTitle = Right Click Context Menu EditTool
+buildDir = build\x64
+buildMachine = 0

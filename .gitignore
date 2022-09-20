@@ -1,14 +1,11 @@
-# Cache / Options Visual Studio Category
-.vs/
+# Environmental stuff.
+/build/
 
-# Build Results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
+# Personal stuff.
+.ninja/secret.ninja
+.obsidian/
+
+*.zip
+*.exe
+*.npp
+*.ninja_log
