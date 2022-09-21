@@ -38,8 +38,10 @@ namespace windows::windowLeft {
 				
 			/// TabControl Kontrolka
 			{
+				
+				const vector2<uint64> tabOffset(6, 7);
 				hTab = CreateWindowExW( 0, WC_TABCONTROLW, 0, WS_CHILD | WS_VISIBLE /*|TCS_FIXEDWIDTH*/,
-					0, 0, 544, 375, window, 0, process, NULL );
+					tabOffset.x, tabOffset.y, 544, 375, window, 0, process, NULL );
 				
 				if constexpr (DEBUG)
 				// ERROR HANDLING
@@ -65,7 +67,12 @@ namespace windows::windowLeft {
 				
 				/// TabControl Kontrolka Inner
 				{
-					innerTab = CreateWindowExW(0, WC_TABCONTROLW, 0, WS_CHILD | WS_VISIBLE, 10, 23, 544, 375, window, 0, process, NULL);
+					const vector2<uint64> tabInnerOffset(6, 7);
+					
+					innerTab = CreateWindowExW(0, WC_TABCONTROLW, 0, WS_CHILD | WS_VISIBLE, 
+						10 + tabOffset.x + tabInnerOffset.x, 
+						23 + tabOffset.y + tabInnerOffset.y, 
+						544, 375, window, 0, process, NULL);
 					//SetWindowSubclass(innerTab, (SUBCLASSPROC)&InnerTabProcedure, 50, 0);
 					
 					if constexpr (DEBUG)

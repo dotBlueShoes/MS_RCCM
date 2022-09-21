@@ -13,7 +13,7 @@ namespace windows::windowRight {
 		const array<winapi::wchar, 12> className ( L"WindowRight" );
 		const vector2<uint64> 
 			windowRightOffset ( 700 - parentOffset.x, 0 ), // no idea why -16
-			windowRightSize	( 700, 800 - parentOffset.y ); // 59 takes the nonuser with menu ? / i think i am able to get that number all the way here...
+			windowRightSize	( 700 - parentOffset.x, 800 - parentOffset.y ); // 59 takes the nonuser with menu ? / i think i am able to get that number all the way here...
 			
 		if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Right:Create");
 				
@@ -39,9 +39,9 @@ namespace windows::windowRight {
 			/// Creating the inner child window.
 			{
 				const array<winapi::wchar, 12> classNameInner ( L"WindowPreviewInner" );
-				const vector2<uint64> 
+				const vector2<uint64>
 					windowInnerOffset ( 15, 15 ),
-					windowInnerSize	( 670, 511 ); // (200 wolnej)
+					windowInnerSize	( 662, 511 ); // (200 wolnej)
 				const winapi::windowHandle innerWindow (
 					CreateChildWindow (
 						process, 

@@ -28,7 +28,7 @@ namespace windows::mainWindow {
 		
 		{
 			const vector2<uint64> windowMainPoistion ( CW_USEDEFAULT, 0 );
-			const vector2<uint64> initialClientAreaOffset (16, 59); // Honestly maybe i should just use getclienbtArea.. thats way simpler i think
+			const vector2<uint64> initialClientAreaOffset (8, 59); // Honestly maybe i should just use getclienbtArea.. thats way simpler i think
 			
 			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Create");
 				
