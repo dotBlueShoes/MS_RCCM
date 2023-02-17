@@ -5,6 +5,7 @@
 #include "MST/WinAPI.hpp"
 
 using namespace mst;
+using namespace mst::debug;
 //using namespace mst::winapi::window; // !
 
 #include "ResourceHandler.hpp"				/// Resource File.

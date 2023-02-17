@@ -26,7 +26,7 @@ namespace windows::windowLeft {
 		
 			case input::Create: {
 				//windows::CreateEditor(mainProcess, window);
-				if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Left:Event-Create");
+				DEBUG logger::Info("(CALL) Window-Left:Event-Create");
 				return proceeded::True;
 			}
 				
@@ -37,12 +37,12 @@ namespace windows::windowLeft {
 						const int index ( SendMessage(hTab, TCM_GETCURSEL, 0, 0) ); /// Indeks aktualnej kontrolki, Get Current Selected
 						switch( index ) { 															
 							case ID_TAB_0:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_0");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_0");
 								//ShowWindow( hEdit, SW_SHOW );
 								//ShowWindow( hRadioButton, SW_HIDE );
 								break;
 							case ID_TAB_1:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_1");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_1");
 								//ShowWindow( hEdit, SW_HIDE );
 								//ShowWindow( hRadioButton, SW_SHOW );
 								break;
@@ -52,23 +52,23 @@ namespace windows::windowLeft {
 						const int index ( SendMessage(innerTab, TCM_GETCURSEL, 0, 0) ); /// Indeks aktualnej kontrolki, Get Current Selected
 						switch( index ) { 
 							case ID_TAB_I_0:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_0");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_I_0");
 								//ShowWindow( hEdit, SW_SHOW );
 								//ShowWindow( hRadioButton, SW_HIDE );
 								break;
 							case ID_TAB_I_1:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_1");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_I_1");
 								//ShowWindow( hEdit, SW_HIDE );
 								//ShowWindow( hRadioButton, SW_SHOW );
 								break;
 								//itd.
 							case ID_TAB_I_2:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_2");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_I_2");
 								//ShowWindow( hEdit, SW_SHOW );
 								//ShowWindow( hRadioButton, SW_HIDE );
 								break;
 							case ID_TAB_I_3:
-								if constexpr (DEBUG) debug::LogInfo("(TABEVENT) ID_TAB_I_3");
+								DEBUG logger::Info("(TABEVENT) ID_TAB_I_3");
 								//ShowWindow( hEdit, SW_HIDE );
 								//ShowWindow( hRadioButton, SW_SHOW );
 								break;

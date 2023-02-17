@@ -12,7 +12,7 @@ namespace windows::mainWindow {
 	namespace event {
 
 		inline proceeded Create(const winapi::windowHandle& mainWindow) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-Create");
+			DEBUG logger::Info("(CALL) Window-Main:Event-Create");
 			if constexpr (SYSTEM_VERSION == SystemVersion::Windows10) 
 				if (darkmode::isSupported) {
 					/// Refresh titlebar theme color.
@@ -23,14 +23,14 @@ namespace windows::mainWindow {
 		}
 	
 		inline proceeded Destroy() {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-Destory");
+			DEBUG logger::Info("(CALL) Window-Main:Event-Destory");
 			brushes::Destroy();
 			PostQuitMessage(0); /// Call to the thread queue itself that we're finished.
 			return proceeded::True;
 		}
 	
 		inline proceeded Paint(const winapi::windowHandle& window) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-Paint");
+			DEBUG logger::Info("(CALL) Window-Main:Event-Paint");
 			const array<winapi::wchar, 10> sample { L"Type here" };
 			
 			winapi::windowDrawContext drawContext;
@@ -69,7 +69,7 @@ namespace windows::mainWindow {
 		}
 	
 		inline proceeded MessageAbout(const winapi::windowHandle& window) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-MessageAbout");
+			DEBUG logger::Info("(CALL) Window-Main:Event-MessageAbout");
 			DialogBox(mainProcess, MAKEINTRESOURCE(resourceHandler::windowAboutId), window, (DLGPROC)windows::About);
 			return proceeded::True;
 		}
@@ -79,7 +79,7 @@ namespace windows::mainWindow {
 			const winapi::messageW& wArgument, 
 			const winapi::messageL& lArgument
 		) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-SettingChange");
+			DEBUG logger::Info("(CALL) Window-Main:Event-SettingChange");
 			if (darkmode::isSupported)
 				if (wArgument == 0)
 					return darkmode::CheckMainWindowWhetherImmersiveColorSet(window, (winapi::wchar*)lArgument, messageCounter);
@@ -87,7 +87,7 @@ namespace windows::mainWindow {
 		}
 	
 		inline proceeded ThemeChange(winapi::windowHandle window) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-ThemeChange");
+			DEBUG logger::Info("(CALL) Window-Main:Event-ThemeChange");
 			
 			darkmode::RefreshTitleBarTheme(window);
 		
@@ -114,7 +114,7 @@ namespace windows::mainWindow {
 			int clientX, 
 			int clientY
 		) {
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Event-Resize");
+			DEBUG logger::Info("(CALL) Window-Main:Event-Resize");
 			/// More about - https://devblogs.microsoft.com/oldnewthing/20050706-26/?p=35023
 			const uint64 windowsNumber ( 2 );
 			const uint64 clientXHalf ( clientX / 2 );

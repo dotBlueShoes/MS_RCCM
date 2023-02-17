@@ -30,7 +30,7 @@ namespace windows::mainWindow {
 			const vector2<uint64> windowMainPoistion ( CW_USEDEFAULT, 0 );
 			const vector2<uint64> initialClientAreaOffset (8, 59); // Honestly maybe i should just use getclienbtArea.. thats way simpler i think
 			
-			if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Main:Create");
+			DEBUG logger::Info("(CALL) Window-Main:Create");
 				
 			const winapi::windowHandle window ( 
 				Initialize (
@@ -43,8 +43,7 @@ namespace windows::mainWindow {
 				) 
 			); 
 			
-			if constexpr (DEBUG) 
-				if (window == NULL) debug::LogError("Window not created!");
+			DEBUG if (window == NULL) logger::Error("Window not created!");
 		
 			leftWindow = windowLeft::Create(
 				mainProcess,

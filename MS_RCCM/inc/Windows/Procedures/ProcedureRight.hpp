@@ -13,7 +13,7 @@ namespace windows::windowRight {
 		switch (message) { 
 				
 			case input::Create: {
-				if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Right:Event-Create");
+				DEBUG logger::Info("(CALL) Window-Right:Event-Create");
 				return proceeded::True;
 			}
 			
@@ -32,7 +32,7 @@ namespace windows::windowRight {
 			switch (message) { 
 					
 				case input::Create: {
-					if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Inner:Event-Create");
+					DEBUG logger::Info("(CALL) Window-Inner:Event-Create");
 					return proceeded::True;
 				}
 				

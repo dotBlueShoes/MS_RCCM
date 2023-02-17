@@ -15,7 +15,7 @@ namespace windows::windowLeft {
 			windowLeftSize ( 700 - parentOffset.x, 800 - parentOffset.y),
 			windowLeftOffset ( 0, 0 );
 			
-		if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Left:Create");
+		DEBUG logger::Info("(CALL) Window-Left:Create");
 				
 		{
 			const winapi::windowHandle window (
@@ -32,9 +32,8 @@ namespace windows::windowLeft {
 				)
 			);
 			
-			if constexpr (DEBUG)
-				// ERROR HANDLING
-				if (window == NULL) debug::LogError("Window not created!");
+			// ERROR HANDLING
+			DEBUG if (window == NULL) logger::Error("Window not created!");
 				
 			/// TabControl Kontrolka
 			{
@@ -43,9 +42,8 @@ namespace windows::windowLeft {
 				hTab = CreateWindowExW( 0, WC_TABCONTROLW, 0, WS_CHILD | WS_VISIBLE /*|TCS_FIXEDWIDTH*/,
 					tabOffset.x, tabOffset.y, 544, 375, window, 0, process, NULL );
 				
-				if constexpr (DEBUG)
 				// ERROR HANDLING
-					if (hTab == NULL) debug::LogError("Window not created!");
+				DEBUG if (hTab == NULL) logger::Error("Window not created!");
 					
 				/// For fixedwidth to set the fixedwidth
 				//SendMessage(hTab, TCM_SETITEMSIZE, 0, MAKELPARAM(150, 20));
@@ -75,9 +73,8 @@ namespace windows::windowLeft {
 						544, 375, window, 0, process, NULL);
 					//SetWindowSubclass(innerTab, (SUBCLASSPROC)&InnerTabProcedure, 50, 0);
 					
-					if constexpr (DEBUG)
 					// ERROR HANDLING
-						if (innerTab == NULL) debug::LogError("Window not created!");
+					DEBUG if (innerTab == NULL) logger::Error("Window not created!");
 						
 					/// For fixedwidth to set the fixedwidth
 					//SendMessage(innerTab, TCM_SETITEMSIZE, 0, MAKELPARAM(150, 20));

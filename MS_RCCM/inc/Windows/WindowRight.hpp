@@ -15,7 +15,7 @@ namespace windows::windowRight {
 			windowRightOffset ( 700 - parentOffset.x, 0 ), // no idea why -16
 			windowRightSize	( 700 - parentOffset.x, 800 - parentOffset.y ); // 59 takes the nonuser with menu ? / i think i am able to get that number all the way here...
 			
-		if constexpr (DEBUG) debug::LogInfo("(CALL) Window-Right:Create");
+		DEBUG logger::Info("(CALL) Window-Right:Create");
 				
 		{
 			const winapi::windowHandle window (
@@ -32,9 +32,8 @@ namespace windows::windowRight {
 				)
 			);
 			
-			if constexpr (DEBUG)
-				// ERROR HANDLING
-				if (window == NULL) debug::LogError("Window not created!");
+			// ERROR HANDLING
+			DEBUG if (window == NULL) logger::Error("Window not created!");
 				
 			/// Creating the inner child window.
 			{
@@ -57,9 +56,8 @@ namespace windows::windowRight {
 					)
 				);
 				
-				if constexpr (DEBUG)
-					// ERROR HANDLING
-					if (innerWindow == NULL) debug::LogError("Window not created!");
+				// ERROR HANDLING
+				DEBUG if (innerWindow == NULL) logger::Error("Window not created!");
 			}
 					
 			return window;
